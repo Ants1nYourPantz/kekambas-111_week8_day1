@@ -7,22 +7,14 @@ export default function ListForm() {
   const handleFormSubmit = (event) => {
     event.preventDefault();
     setListItems([...listItems, inputValue]);
-    setInputValue(''); // clear input field
+    setInputValue('');
   };
 
   return (
     <form onSubmit={handleFormSubmit}>
-      <input
-        type="text"
-        value={inputValue}
-        onChange={(event) => setInputValue(event.target.value)}
-      />
-      <button type="submit">Add Item</button>
-      <ul >
-        {listItems.map((item, index) => (
-          <li key={index}>{item}</li>
-        ))}
-      </ul>
+      <input type="text" className="form-control text-center" placeholder="What do you have to do?" value={inputValue} onChange={(event) => setInputValue(event.target.value)}/>
+      <input type="submit" value="Add" class="btn btn-dark w-100 mt-3"/>
+      <>{listItems.map((item) => (<li>{item}</li>))}</>
     </form>
   );
 };
